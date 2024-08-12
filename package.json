@@ -1,0 +1,22 @@
+{
+  "name": "catsearch-react",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "parcel -p 1337 src/index.html"
+  },
+  "dependencies": {
+    "preact-jsx-runtime": "^1.2.0",
+    "prop-types": "^15.7.2",
+    "react-dom": "^18.2",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.65",
+    "@types/react-dom": "^17.0.20",
+    "parcel": "^1.12.3",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^2.3.0",
+    "react": "^18.2"
+  }
+}
