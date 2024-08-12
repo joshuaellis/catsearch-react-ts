@@ -1,28 +1,26 @@
 import * as React from "react"
-import { useState, useEffect, useCallback } from "react"
+
+import { useQuery } from "@tanstack/react-query"
 import { fetchSearchResultsFromAPI } from "./searchApiClient"
 
 export function CatSearch() {
-  const [valid, setValid] = useState(false)
-  const [hits, setHits] = useState<any[]>([])
-  const [searchTerm, setSearchTerm] = useState("")
+  const [searchTerm, setSearchTerm] = React.useState("")
 
-  const searchTermOnChange = useCallback((event) => {
+  const { data } = useQuery({
+    queryKey: ["cats", searchTerm],
+    queryFn: ({ signal }) => fetchSearchResultsFromAPI(searchTerm, { signal }),
+    enabled: searchTerm.length >= 2,
+    initialData: [],
+  })
+
+  const searchTermOnChange: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
     const { value } = event.target
     setSearchTerm(value)
-  }, [])
+  }
 
-  useEffect(() => {
-    setValid(true)
-    if (searchTerm.length < 2) {
-      setValid(false)
-      return
-    }
-
-    fetchSearchResultsFromAPI(searchTerm).then((hits) => {
-      setHits(hits)
-    })
-  })
+  const valid = searchTerm.length >= 2
 
   return (
     <div>
@@ -34,8 +32,8 @@ export function CatSearch() {
           : `You searched for ${searchTerm}`}
       </div>
       <div>
-        {(hits && hits.length) > 0
-          ? hits.map((hit, i) => <div key={i}>🐈 {hit.breed}</div>)
+        {data.length > 0
+          ? data.map((datum, i) => <div key={i}>🐈 {datum.breed}</div>)
           : "No hits"}
       </div>
     </div>
