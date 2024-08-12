@@ -1,5 +1,4 @@
-import * as React from "react"
 import { CatSearch } from "./CatSearch"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 
-ReactDOM.render(React.createElement(CatSearch), document.getElementById("main"))
+createRoot(document.getElementById("main")).render(<CatSearch />)
