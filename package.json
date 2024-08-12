@@ -6,17 +6,16 @@
     "start": "parcel -p 1337 src/index.html"
   },
   "dependencies": {
-    "preact-jsx-runtime": "^1.2.0",
-    "prop-types": "^15.7.2",
-    "react-dom": "^18.2",
-    "typescript": "^5.2.2"
+    "@tanstack/react-query": "^5.51.23",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/react": "^17.0.65",
-    "@types/react-dom": "^17.0.20",
-    "parcel": "^1.12.3",
-    "parcel-bundler": "^1.12.3",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "parcel": "^2.12.0",
     "prettier": "^2.3.0",
-    "react": "^18.2"
+    "process": "^0.11.10",
+    "typescript": "^5.2.2"
   }
 }

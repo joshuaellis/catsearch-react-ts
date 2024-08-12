@@ -1,5 +1,11 @@
-import * as React from "react"
 import { CatSearch } from "./CatSearch"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
-ReactDOM.render(React.createElement(CatSearch), document.getElementById("main"))
+const client = new QueryClient()
+
+createRoot(document.getElementById("main")).render(
+  <QueryClientProvider client={client}>
+    <CatSearch />
+  </QueryClientProvider>
+)
